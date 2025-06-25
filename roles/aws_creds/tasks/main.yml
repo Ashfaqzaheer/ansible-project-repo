@@ -1,0 +1,25 @@
+---
+# tasks file for roles/aws_creds
+- name: Ensure .aws directory exists
+  file:
+    path: "/home/{{ ansible_user }}/.aws"
+    state: directory
+    mode: '0700'
+
+- name: Create AWS credentials file
+  copy:
+    dest: "/home/{{ ansible_user }}/.aws/credentials"
+    content: |
+      [default]
+      aws_access_key_id = {{ vault_aws_access_key_id }}
+      aws_secret_access_key = {{ vault_aws_secret_access_key }}
+    mode: '0600'
+
+- name: Create AWS config file
+  copy:
+    dest: "/home/{{ ansible_user }}/.aws/config"
+    content: |
+      [default]
+      region = {{ vault_aws_region }}
+      output = json
+    mode: '0600'

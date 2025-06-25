@@ -1,0 +1,25 @@
+- name: Stop Apache before patching
+  service:
+    name: apache2
+    state: stopped
+  notify: stop_apache
+  tags: patching
+
+- name: Apply system updates
+  apt:
+    upgrade: dist
+    update_cache: yes
+  become: yes
+  tags: patching
+
+- name: Simulate reboot wait time
+  wait_for:
+    timeout: 20
+  tags: patching
+
+- name: Start Apache after patching
+  service:
+    name: apache2
+    state: started
+  notify: start_apache
+  tags: patching

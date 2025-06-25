@@ -1,0 +1,25 @@
+- name: Ensure users exist
+  user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    state: present
+    create_home: yes
+  loop: "{{ users }}"
+
+- name: Create .ssh directory
+  file:
+    path: "/home/{{ item.name }}/.ssh"
+    state: directory
+    owner: "{{ item.name }}"
+    group: "{{ item.name }}"
+    mode: '0700'
+  loop: "{{ users }}"
+
+- name: Set authorized_keys
+  copy:
+    content: "{{ item.pubkey }}"
+    dest: "/home/{{ item.name }}/.ssh/authorized_keys"
+    owner: "{{ item.name }}"
+    group: "{{ item.name }}"
+    mode: '0600'
+  loop: "{{ users }}"

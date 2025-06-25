@@ -1,0 +1,15 @@
+# Ignore credentials and secrets
+vault-pass.txt
+*.pem
+*.retry
+
+# Ignore system files
+__pycache__/
+*.swp
+.DS_Store
+
+# Ignore roles cache (if any)
+*.tar.gz
+
+# VS Code
+.vscode/

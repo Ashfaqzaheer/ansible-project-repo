@@ -1,0 +1,9 @@
+users:
+  - name: alice
+    shell: /bin/bash
+    pubkey: "ssh-rsa AAAAB3Nza... alice@laptop"
+
+  - name: bob
+    shell: /bin/zsh
+    pubkey: "ssh-rsa AAAAB3Nza... bob@desktop"
+    ansible_user: ubuntu

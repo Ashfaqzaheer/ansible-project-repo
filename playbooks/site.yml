@@ -1,0 +1,13 @@
+---
+
+- name: AWS Infra Setup
+  hosts: webservers
+  become: yes
+  vars_files:
+    - group_vars/all/vault.yml
+    - group_vars/all/users.yml
+  roles:
+    - aws_creds
+    - apache_web
+    - patching
+    - linux_users
