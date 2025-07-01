@@ -1,0 +1,15 @@
+- name: Setup MySQL, App, and EC2
+  hosts: ec2_instances
+  become: yes
+  vars_files:
+    - ../group_vars/all/vault.yml
+
+    - mysql_setup
+    - mysql_users
+    - app_deploy
+    - ec2_launch
+
+  # tasks:
+  #   - name: DEBUG mysql root password
+  #     debug:
+  #       msg: "The MySQL root password is {{ mysql_root_password }}"

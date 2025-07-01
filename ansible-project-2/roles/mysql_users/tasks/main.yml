@@ -1,0 +1,9 @@
+- name: Create MySQL users
+  mysql_user:
+    name: "{{ item.name }}"
+    host: "{{ item.host }}"
+    password: "{{ item.password_hash }}"
+    encrypted: yes
+    priv: "{{ item.priv }}"
+    state: present
+  loop: "{{ mysql_users }}"

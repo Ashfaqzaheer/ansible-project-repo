@@ -1,0 +1,15 @@
+- name: Launch EC2 Instance
+  community.aws.ec2_instance:
+    key_name: "{{ key_name }}"
+    instance_type: "{{ instance_type }}"
+    image_id: "{{ ami_id }}"
+    region: "{{ aws_region }}"
+    wait: true
+    security_group: "{{ security_group }}"
+    tags:
+      Name: "AnsibleInstance"
+  register: ec2
+
+- name: Debug instance info
+  debug:
+    var: ec2.instances

@@ -1,0 +1,5 @@
+app_port: 8080
+debug: true
+db_host: localhost
+db_user: myuser
+db_password: "{{ db_password }}"

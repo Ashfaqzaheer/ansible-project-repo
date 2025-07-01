@@ -1,0 +1,18 @@
+mysql_users:
+  - name: user1
+    host: "%"
+    password_hash: "*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19"
+    priv: "*.*:ALL"
+  - name: user2
+    host: "localhost"
+    password_hash: "*0D107D09F5B49D70E1092C1C0BCBFA2D"
+    priv: "mydb.*:SELECT,INSERT"
+mysql_users:
+  - name: user1
+    host: "%"
+    password_hash: "*2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19"
+    priv: "*.*:ALL"
+  - name: user2
+    host: "localhost"
+    password_hash: "*0D107D09F5B49D70E1092C1C0BCBFA2D"
+    priv: "mydb.*:SELECT,INSERT"
