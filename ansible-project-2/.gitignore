@@ -1,0 +1,21 @@
+# Ansible-related
+*.retry
+*.log
+*.pyc
+*.swp
+__pycache__/
+.vagrant/
+.terraform/
+inventory/*_hosts.ini
+group_vars/all/vault.yml
+
+# SSH and secrets
+*.pem
+*.key
+*.crt
+*.vault_pass.txt
+.vscode/
+
+# System
+.DS_Store
+.idea/

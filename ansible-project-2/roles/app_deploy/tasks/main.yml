@@ -1,0 +1,21 @@
+- name: Create app directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - /opt/myapp
+    - /opt/myapp/config
+    - /opt/myapp/logs
+
+- name: Deploy myapp.py
+  copy:
+    src: files/myapp.py
+    dest: /opt/myapp/myapp.py
+    mode: '0755'
+
+- name: Generate config file
+  template:
+    src: config.ini.j2
+    dest: /opt/myapp/config/app_config.ini
+    mode: '0644'

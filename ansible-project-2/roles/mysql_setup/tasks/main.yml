@@ -1,0 +1,27 @@
+- name: Install MySQL
+  apt:
+    name: mysql-server
+    state: present
+    update_cache: yes
+
+- name: Ensure MySQL is running
+  service:
+    name: mysql
+    state: started
+    enabled: yes
+
+- name: Set root password
+  mysql_user:
+    name: root
+    host_all: yes
+    password: "{{ mysql_root_password }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: Create .my.cnf file for root user
+  copy:
+    dest: /root/.my.cnf
+    content: |
+      [client]
+      user=root
+      password={{ mysql_root_password }}
+    mode: '0600'
